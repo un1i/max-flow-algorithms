@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.26 FATAL_ERROR)
+
+set(CMAKE_CXX_STANDARD 20)
+
+project(max_flow)
+
+
+add_library(edmonds_karp include/edmonds_karp.h src/edmonds_karp.cpp)
+add_library(dinic include/dinic.h src/dinic.cpp)
+
+add_executable(max_flow src/main.cpp)
+
+target_link_libraries(max_flow edmonds_karp)
+
+target_link_libraries(max_flow dinic)
+
+add_executable(generate_graph src/generate_graph.cpp)
+
