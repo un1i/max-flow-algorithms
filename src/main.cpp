@@ -27,5 +27,6 @@ int main(){
     }
 
     int max_flow = edmonds_karp(adj, capacity, s, t);
+    max_flow = dinic(adj, capacity, s, t);
     cout << max_flow;
 }
