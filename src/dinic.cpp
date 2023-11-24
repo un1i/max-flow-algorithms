@@ -14,10 +14,8 @@ int dfs(const std::vector<std::vector<size_t>>& adj,
 
 int dinic(const std::vector<std::vector<size_t>>& adj, std::vector<std::vector<int>> capacity, size_t source, size_t sink){
     int max_flow = 0;
-    std::vector<int> distance;
-    distance.resize(capacity.size());
-    std::vector<int> free_edge_ind;
-    free_edge_ind.resize(capacity.size());
+    std::vector<int> distance(capacity.size());
+    std::vector<int> free_edge_ind(capacity.size());
 
     while (bfs(adj, distance, capacity, source, sink)){
         std::fill(free_edge_ind.begin(), free_edge_ind.end(), 0);
@@ -69,14 +67,15 @@ int dfs(const std::vector<std::vector<size_t>>& adj,
 
     for(int i = first_edge_ind[cur]; i < adj[cur].size(); i++){
         size_t next = adj[cur][i];
-        if (distance[cur] + 1 == distance[next]){
-            if (min_cap == -1){
-                min_cap = capacity[cur][next];
+        if (distance[cur] + 1 == distance[next] && capacity[cur][next]){
+            int cur_cap = min_cap;
+            if (cur_cap == -1){
+                cur_cap = capacity[cur][next];
             }
             else{
-                min_cap = std::min(min_cap, capacity[cur][next]);
+                cur_cap = std::min(cur_cap, capacity[cur][next]);
             }
-            int flow = dfs(adj, distance, capacity, first_edge_ind, next, sink, min_cap);
+            int flow = dfs(adj, distance, capacity, first_edge_ind, next, sink, cur_cap);
             if (flow != 0){
                 capacity[cur][next] -= flow;
                 capacity[next][cur] += flow;
