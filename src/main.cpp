@@ -2,6 +2,7 @@
 #include <fstream>
 #include "../include/edmonds_karp.h"
 #include "../include/dinic.h"
+#include "../include/mpm.h"
 
 using namespace std;
 
@@ -27,6 +28,9 @@ int main(){
     }
 
     int max_flow = edmonds_karp(adj, capacity, s, t);
+    cout << max_flow << '\n';
+    max_flow = mpm(adj, capacity, s, t);
+    cout << max_flow << '\n';
     max_flow = dinic(adj, capacity, s, t);
     cout << max_flow;
 }
