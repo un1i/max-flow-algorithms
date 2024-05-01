@@ -9,6 +9,8 @@ add_library(edmonds_karp include/edmonds_karp.h src/edmonds_karp.cpp)
 add_library(dinic include/dinic.h src/dinic.cpp
         src/modified_edmonds_karp.cpp)
 add_library(mpm include/mpm.h src/mpm.cpp)
+add_library(modified_edmonds_karp include/modified_edmonds_karp.h
+        src/modified_edmonds_karp.cpp)
 
 add_executable(max_flow src/main.cpp
         time_test.cpp graph_generator/generate_graph.cpp
@@ -22,3 +24,5 @@ target_link_libraries(max_flow dinic)
 target_link_libraries(mpm dinic)
 
 target_link_libraries(max_flow mpm)
+
+target_link_libraries(max_flow modified_edmonds_karp)
