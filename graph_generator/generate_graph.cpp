@@ -1,18 +1,18 @@
 #include <set>
 #include <random>
-#include <fstream>
 
 
-int main(int arg, char** argv){
-    int n = std::stoi(argv[1]);
-    int m = std::stoi(argv[2]);
-    int max_weight = std::stoi(argv[3]);
-
+std::pair<std::vector<std::vector<size_t>>, std::vector<std::vector<int>>> generate_graph(int n, int m, int max_weight){
     std::random_device rd;
     std::mt19937 mt(rd());
-    std::uniform_int_distribution<int> random_vertex(1, n);
+    std::uniform_int_distribution<int> random_vertex(0, n - 1);
 
     std::set<std::pair<size_t, size_t>> edges;
+    std::vector<std::vector<size_t>> adj(n);
+    std::vector<std::vector<int>> capacity(n);
+    for (auto& vec : capacity) {
+        vec.resize(n);
+    }
 
     int i = 0;
     while (i < m){
@@ -25,10 +25,11 @@ int main(int arg, char** argv){
     }
 
     std::uniform_int_distribution<int> random_weight(1, max_weight);
-    std::ofstream file("input.txt");
-    file << n << ' ' << m << ' ' << 1 << ' ' << n << '\n';
     for(auto edge: edges){
-        size_t c = random_weight(mt);
-        file << edge.first << ' ' << edge.second << ' ' << c << '\n';
+        int c = random_weight(mt);
+        adj[edge.first].emplace_back(edge.second);
+        adj[edge.second].emplace_back(edge.first);
+        capacity[edge.first][edge.second] = c;
     }
+    return {adj, capacity};
 }
