@@ -12,10 +12,19 @@ add_library(mpm include/mpm.h src/mpm.cpp)
 add_library(modified_edmonds_karp include/modified_edmonds_karp.h
         src/modified_edmonds_karp.cpp)
 
+#add_library(splaytree include/splaytree.h src/splaytree.cpp)
+#add_library(linkcuttree include/linkcuttree.h src/linkcuttree.cpp)
+#add_library(dinicmaxflow include/dinicmaxflow.h src/dinicmaxflow.cpp)
+
 add_executable(max_flow src/main.cpp
         time_test.cpp graph_generator/generate_graph.cpp
         include/generate_graph.h
-        include/time_test.h)
+        include/time_test.h
+
+        include/splaytree.h src/splaytree.cpp
+        include/linkcuttree.h src/linkcuttree.cpp
+        include/dinicmaxflow.h src/dinicmaxflow.cpp
+        )
 
 target_link_libraries(max_flow edmonds_karp)
 
@@ -26,3 +35,7 @@ target_link_libraries(mpm dinic)
 target_link_libraries(max_flow mpm)
 
 target_link_libraries(max_flow modified_edmonds_karp)
+
+#target_link_libraries(linkcuttree splaytree)
+#target_link_libraries(dinicmaxflow linkcuttree)
+#target_link_libraries(max_flow dinicmaxflow)
