@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+
 int main(){
     GraphAdj adj = {
             {{1, 10}, {2, 5}},
@@ -10,7 +11,7 @@ int main(){
             {{4, 5}},
             {},
     };
-    Graph graph(adj, 0, 4);
+    Graph graph(5, adj, 0, 4);
     EdmondsKarp karp(graph);
     karp.run();
     std::cout << karp.getMaxFlow();
