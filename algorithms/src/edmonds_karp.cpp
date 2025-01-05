@@ -4,7 +4,7 @@
 #include <climits>
 
 
-EdmondsKarp::EdmondsKarp(const Graph &graph) : Algorithm(graph){}
+EdmondsKarp::EdmondsKarp(const Graph &graph) : Algorithm(graph) {}
 
 void EdmondsKarp::run() {
     int flow = 0;

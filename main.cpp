@@ -1,4 +1,5 @@
 #include "edmonds_karp.h"
+#include "dinic.h"
 
 #include <iostream>
 
@@ -14,5 +15,10 @@ int main(){
     Graph graph(5, adj, 0, 4);
     EdmondsKarp karp(graph);
     karp.run();
-    std::cout << karp.getMaxFlow();
+    std::cout << "Edmonds-Karp result: " << karp.getMaxFlow() << std::endl;
+
+    Dinic dinic(graph);
+    dinic.run();
+    std::cout << "Dinic's result: " << dinic.getMaxFlow() << std::endl;
+
 }
