@@ -13,6 +13,6 @@ add_subdirectory(graph)
 add_subdirectory(algorithms)
 
 add_executable(maxFlow main.cpp)
-target_link_libraries(maxFlow edmondsKarp dinic)
+target_link_libraries(maxFlow edmondsKarp dinic mpm)
 
 enable_testing()

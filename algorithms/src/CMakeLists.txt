@@ -5,3 +5,6 @@ target_link_libraries(edmondsKarp graph algorithm)
 
 add_library(dinic dinic.cpp)
 target_link_libraries(dinic graph algorithm)
+
+add_library(mpm mpm.cpp)
+target_link_libraries(mpm graph algorithm)
