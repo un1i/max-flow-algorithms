@@ -7,5 +7,4 @@ public:
     void run() override;
 private:
     bool bfs(std::vector<int>& previous, const EdgeAvailableCapacity& available_capacity);
-    EdgeAvailableCapacity getAvailableCapacity();
 };

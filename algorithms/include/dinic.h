@@ -11,7 +11,6 @@ private:
     bool bfs(std::vector<int>& distance, const EdgeAvailableCapacity& available_capacity);
     int dfs(size_t cur_vertex, int min_cap, const std::vector<int>& distance,
             EdgeAvailableCapacity& available_capacity, std::vector<int>& first_edge_ind);
-    EdgeAvailableCapacity getAvailableCapacity();
 };
 
 #endif //MAXFLOW_DINIC_H

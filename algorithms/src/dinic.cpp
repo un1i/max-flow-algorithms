@@ -73,13 +73,3 @@ int Dinic::dfs(size_t cur_vertex, int min_cap, const std::vector<int>& distance,
     }
     return 0;
 }
-
-EdgeAvailableCapacity Dinic::getAvailableCapacity() {
-    EdgeAvailableCapacity available_capacity;
-    for (int begin_edge = 0; begin_edge < graph.getNumVertices(); begin_edge++) {
-        for (const EdgeAdj& edge_adj : graph.getAdj()[begin_edge]) {
-            available_capacity[begin_edge][edge_adj.end] = edge_adj.capacity;
-        }
-    }
-    return available_capacity;
-}

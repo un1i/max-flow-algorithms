@@ -23,7 +23,6 @@ private:
     void sendFlowToSource(VertexInfo vertex, EdgeAvailableCapacity& available_capacity,
                         const std::vector<int>& distance, std::vector<int>& free_edge_ind,
                         std::vector<bool>& del_vertices, std::vector<int>& pin, std::vector<int>& pout);
-    EdgeAvailableCapacity getAvailableCapacity();
 };
 
 #endif //MAXFLOW_MPM_H

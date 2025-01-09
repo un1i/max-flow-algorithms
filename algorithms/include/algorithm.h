@@ -13,6 +13,7 @@ class Algorithm {
 protected:
     const Graph& graph;
     int max_flow{};
+    EdgeAvailableCapacity getAvailableCapacity();
 public:
     explicit Algorithm(const Graph& graph);
     virtual void run() = 0;
