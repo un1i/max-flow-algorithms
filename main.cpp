@@ -1,6 +1,7 @@
 #include "edmonds_karp.h"
 #include "dinic.h"
 #include "mpm.h"
+#include "modified_edmonds_karp.h"
 
 #include <iostream>
 
@@ -25,4 +26,8 @@ int main(){
     MPM mpm(graph);
     mpm.run();
     std::cout << "MPM result: " << mpm.getMaxFlow() << std::endl;
+
+    ModifiedEdmondsKarp modified_edmonds_karp(graph);
+    modified_edmonds_karp.run();
+    std::cout << "Modified Edmonds-Karp: " << modified_edmonds_karp.getMaxFlow() << std::endl;
 }
