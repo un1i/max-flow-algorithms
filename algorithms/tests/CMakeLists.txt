@@ -1,6 +1,7 @@
 set(edmondsKarp testEdmondsKarp)
 set(dinic testDinic)
 set(mpm testMPM)
+set(modifiedEK testModifiedEdmondsKarp)
 
 add_library(dataForTests data_for_tests.cpp)
 target_link_libraries(dataForTests PRIVATE graph)
@@ -25,3 +26,10 @@ add_dependencies(${mpm} googletest)
 target_link_libraries(${mpm} PRIVATE mpm dataForTests gtest gtest_main)
 target_link_directories(${mpm} PUBLIC ${CMAKE_BINARY_DIR}/googletest/install/lib)
 add_test(NAME ${mpm} COMMAND ${mpm})
+
+add_executable(${modifiedEK} test_modified_edmonds_karp.cpp)
+target_include_directories(${modifiedEK} PRIVATE ${CMAKE_SOURCE_DIR}/3rdparty/googletest/googletest/include)
+add_dependencies(${modifiedEK} googletest)
+target_link_libraries(${modifiedEK} PRIVATE modifiedEdmondsKarp dataForTests gtest gtest_main)
+target_link_directories(${modifiedEK} PUBLIC ${CMAKE_BINARY_DIR}/googletest/install/lib)
+add_test(NAME ${modifiedEK} COMMAND ${modifiedEK})
