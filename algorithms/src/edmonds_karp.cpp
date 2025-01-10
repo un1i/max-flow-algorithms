@@ -7,11 +7,16 @@
 EdmondsKarp::EdmondsKarp(const Graph &graph) : Algorithm(graph) {}
 
 void EdmondsKarp::run() {
-    int flow = 0;
     std::vector<int> previous(graph.getNumVertices());
     EdgeAvailableCapacity available_capacity = getAvailableCapacity();
+    max_flow = findMaxFlow(previous, available_capacity);
+}
 
-    while(bfs(previous, available_capacity)) {
+int EdmondsKarp::findMaxFlow(std::vector<int>& previous,
+                             EdgeAvailableCapacity& available_capacity,
+                             int min_capacity) {
+    int flow = 0;
+    while(bfs(previous, available_capacity, min_capacity)) {
         size_t source = graph.getSource();
         size_t sink = graph.getSink();
         size_t prev = previous[sink];
@@ -34,11 +39,12 @@ void EdmondsKarp::run() {
             prev = previous[prev];
         }
     }
-    max_flow = flow;
+    return flow;
 }
 
 bool EdmondsKarp::bfs(std::vector<int>& previous,
-                      const EdgeAvailableCapacity& available_capacity) {
+                      const EdgeAvailableCapacity& available_capacity,
+                      int min_capacity) {
     size_t source = graph.getSource();
     size_t sink = graph.getSink();
     std::fill(previous.begin(), previous.end(), -1);
@@ -52,7 +58,7 @@ bool EdmondsKarp::bfs(std::vector<int>& previous,
 
         for (const EdgeAdj& edge_adj : graph.getAdj()[edge_begin]) {
             if (previous[edge_adj.end] == -1 &&
-            available_capacity.at(edge_begin).at(edge_adj.end)) {
+            available_capacity.at(edge_begin).at(edge_adj.end) >= min_capacity) {
                 previous[edge_adj.end] = edge_begin;
                 if (edge_adj.end == sink) {
                     return true;
