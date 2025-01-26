@@ -7,12 +7,13 @@ project(maxFLow)
 include(cmake/gtest.cmake)
 
 include_directories(${PROJECT_SOURCE_DIR}/algorithms/include)
+include_directories(${PROJECT_SOURCE_DIR}/algorithms/include/dynamic_tree)
 include_directories(${PROJECT_SOURCE_DIR}/graph/include)
 
 add_subdirectory(graph)
 add_subdirectory(algorithms)
 
 add_executable(maxFlow main.cpp)
-target_link_libraries(maxFlow edmondsKarp dinic mpm modifiedEdmondsKarp)
+target_link_libraries(maxFlow edmondsKarp dinic mpm modifiedEdmondsKarp dinicWithDynamicTree)
 
 enable_testing()

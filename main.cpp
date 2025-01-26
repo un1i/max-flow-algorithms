@@ -2,6 +2,7 @@
 #include "dinic.h"
 #include "mpm.h"
 #include "modified_edmonds_karp.h"
+#include "dinic_with_dynamic_tree.h"
 
 #include <iostream>
 
@@ -30,4 +31,8 @@ int main(){
     ModifiedEdmondsKarp modified_edmonds_karp(graph);
     modified_edmonds_karp.run();
     std::cout << "Modified Edmonds-Karp: " << modified_edmonds_karp.getMaxFlow() << std::endl;
+
+    DinicWithDynamicTree dinic_with_dynamic_tree(graph);
+    dinic_with_dynamic_tree.run();
+    std::cout << "Dinic with dynamic tree: " << dinic_with_dynamic_tree.getMaxFlow() << std::endl;
 }
