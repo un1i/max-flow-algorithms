@@ -101,20 +101,21 @@ Node* SplayTree::find(size_t position) {
 }
 
 Node* SplayTree::find(size_t position, Node *vertex) {
-    vertex->push();
-    size_t left_ind = 0;
-    if (vertex->left) {
-        left_ind = vertex->left->getSize();
+    while (true) {
+        vertex->push();
+        size_t left_ind = vertex->left ? vertex->left->getSize() : 0;
+        if (position == left_ind) {
+            splay(vertex);
+            return vertex;
+        }
+        else if (position < left_ind) {
+            vertex = vertex->left;
+        }
+        else {
+            vertex = vertex->right;
+            position -= left_ind + 1;
+        }
     }
-    if (position == left_ind) {
-        splay(vertex);
-        return vertex;
-    }
-
-    if (position < left_ind) {
-        return find(position, vertex->left);
-    }
-    return find(position - left_ind - 1, vertex->right);
 }
 
 std::pair<SplayTree*, SplayTree*> SplayTree::split(SplayTree *tree, size_t position) {
