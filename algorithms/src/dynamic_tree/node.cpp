@@ -1,19 +1,11 @@
-#include <algorithm>
 #include "node.h"
+
+#include <algorithm>
+
 
 Node::Node(size_t id) : id{id}, edge_capacity{0}, subtree_capacity{0},
 size_of_subtree{1}, subtree_min_capacity{0}, remove_capacity_value{0},
 left{nullptr}, right{nullptr}, parent{nullptr}, path_parent{nullptr}, tree_ptr{nullptr} {}
-
-void Node::recursiveDelete() {
-    if (left) {
-        left->recursiveDelete();
-    }
-    if (right) {
-        right->recursiveDelete();
-    }
-    delete this;
-}
 
 void Node::removeCapacity(int value) {
     remove_capacity_value += value;

@@ -11,7 +11,6 @@ class Node {
     friend class LinkCutTree;
 public:
     explicit Node(size_t id);
-    void recursiveDelete();
     void removeCapacity(int value);
     void updateNodeParams();
     void push();

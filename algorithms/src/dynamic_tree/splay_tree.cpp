@@ -1,5 +1,8 @@
 #include "splay_tree.h"
 
+#include <stack>
+
+
 SplayTree::SplayTree(Node *_root) {
     root = _root;
     if (root) {
@@ -8,8 +11,21 @@ SplayTree::SplayTree(Node *_root) {
 }
 
 SplayTree::~SplayTree() {
-    if (root) {
-        root->recursiveDelete();
+    if (!root) {
+        return;
+    }
+    std::stack<Node*> stack;
+    stack.push(root);
+    while (!stack.empty()) {
+        Node* cur = stack.top();
+        stack.pop();
+        if (cur->left) {
+            stack.push(cur->left);
+        }
+        if (cur->right) {
+            stack.push(cur->right);
+        }
+        delete cur;
     }
 }
 
