@@ -1,6 +1,8 @@
 #include "link_cut_tree.h"
 #include "splay_tree.h"
 
+#include <stack>
+
 
 LinkCutTree::LinkCutTree(size_t size) {
     lastExposed = nullptr;
@@ -58,15 +60,15 @@ Node* LinkCutTree::findRoot(size_t ind) {
 }
 
 Node* LinkCutTree::cleanUp(Node *vertex) {
-    Node* root;
-    if (vertex->parent) {
-        root = cleanUp(vertex->parent);
+    std::stack<Node*> stack;
+    while (vertex) {
+        stack.push(vertex);
+        vertex = vertex->parent;
     }
-    else {
-        root = vertex;
-    }
-    if (root) {
-        root->push();
+    Node* root = stack.top();
+    while (!stack.empty()) {
+        stack.top()->push();
+        stack.pop();
     }
     return root;
 }
