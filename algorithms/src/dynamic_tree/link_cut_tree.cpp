@@ -124,15 +124,18 @@ Node* LinkCutTree::getMinEdge(size_t ind) {
 }
 
 Node* LinkCutTree::findLeftestMin(size_t min_value, Node *vertex) {
-    vertex->push();
-    if (vertex->left && vertex->left->getMin() == min_value) {
-        return findLeftestMin(min_value, vertex->left);
+    while (true) {
+        vertex->push();
+        if (vertex->left && vertex->left->getMin() == min_value) {
+            vertex = vertex->left;
+        }
+        else if (vertex->edge_capacity == min_value) {
+            return vertex;
+        }
+        else {
+            vertex = vertex->right;
+        }
     }
-
-    if (vertex->edge_capacity == min_value) {
-        return vertex;
-    }
-    return findLeftestMin(min_value, vertex->right);
 }
 
 void LinkCutTree::setCapacity(size_t vertex_ind, int capacity) {
