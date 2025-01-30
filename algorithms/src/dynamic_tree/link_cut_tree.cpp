@@ -14,9 +14,9 @@ LinkCutTree::LinkCutTree(size_t size) {
 }
 
 LinkCutTree::~LinkCutTree() {
-    for (size_t i = 0; i < nodes.size(); i++) {
-        if (!nodes[i].parent) {
-            SplayTree* buff = nodes[i].tree_ptr;
+    for (const Node& node : nodes) {
+        if (!node.parent) {
+            SplayTree* buff = node.tree_ptr;
             buff->clearRoot();
             delete buff;
         }

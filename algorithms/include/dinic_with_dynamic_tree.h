@@ -7,7 +7,7 @@
 #include <unordered_set>
 
 
-using EdgeInTree = std::unordered_map<size_t, std::unordered_set<int>>;
+using EdgeInTree = std::unordered_map<size_t, std::unordered_set<size_t>>;
 
 class DinicWithDynamicTree : public Dinic {
 public:

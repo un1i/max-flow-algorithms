@@ -94,7 +94,7 @@ void DinicWithDynamicTree::decreaseCapacityInPath(Node *min_edge, EdgeAvailableC
 
 void DinicWithDynamicTree::updateAvailableCapacity(EdgeInTree &edge_in_tree, EdgeAvailableCapacity &availableCapacity) {
     for (const auto& [begin, ends] : edge_in_tree) {
-        for (int end : ends) {
+        for (size_t end : ends) {
             int edge_capacity = link_cut.getEdgeCapacity(begin);
             availableCapacity[end][begin] += availableCapacity[begin][end] - edge_capacity;
             availableCapacity[begin][end] = edge_capacity;
