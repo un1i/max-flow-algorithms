@@ -8,4 +8,4 @@ class IncreaseNumEdgesGraph(Graph):
         self.n = n
 
     def _generate_graph(self, m: int) -> nx.Graph:
-        return nx.gnm_random_graph(self.n, m, directed=True)
+        return nx.gnm_random_graph(self.n, m, directed=False)

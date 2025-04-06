@@ -8,4 +8,4 @@ class RandomGraph(Graph):
         self.p = p
 
     def _generate_graph(self, n: int) -> nx.Graph:
-        return nx.erdos_renyi_graph(n, self.p, directed=True)
+        return nx.erdos_renyi_graph(n, self.p, directed=False)

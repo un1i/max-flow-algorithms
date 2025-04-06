@@ -12,6 +12,7 @@ include_directories(${PROJECT_SOURCE_DIR}/graph/include)
 
 add_subdirectory(graph)
 add_subdirectory(algorithms)
+add_subdirectory(experiment)
 
 add_executable(maxFlow main.cpp)
 target_link_libraries(maxFlow edmondsKarp dinic mpm modifiedEdmondsKarp dinicWithDynamicTree)
