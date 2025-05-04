@@ -6,16 +6,13 @@ from graphs.increase_num_edges_graph import IncreaseNumEdgesGraph
 
 
 def main():
-    start = 10
-    finish = 100
-    step = 10
     graphs = [
-        RandomGraph('dense_graphs', 0.8, start, finish, step),
-        RandomGraph('sparse_graphs', 0.1, start, finish, step),
-        CompleteGraph('complete_graphs', start, finish, step),
-        GridGraph('grid_graphs', start, finish, step),
-        CompleteBipartiteGraph('complete_bipartite_graphs', start, finish, step),
-        IncreaseNumEdgesGraph('increase_num_edges_graphs', 100, 500, 5000, 500)
+        RandomGraph('dense_graphs', 0.8, 100, 1001, 100),
+        RandomGraph('sparse_graphs', 0.1, 500, 5001, 500),
+        CompleteGraph('complete_graphs', 100, 1001, 100),
+        GridGraph('grid_graphs', 10, 101, 10),
+        CompleteBipartiteGraph('complete_bipartite_graphs', 50, 501, 50),
+        IncreaseNumEdgesGraph('increase_num_edges_graphs', 3000, 100000, 1000001, 100000)
     ]
     for graph in graphs:
         graph.write_graphs_to_file()

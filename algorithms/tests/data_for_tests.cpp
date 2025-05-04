@@ -8,7 +8,7 @@ TestData DataForTests::makeLinearGraphData() {
             {{1, 0}, {3, 15}},
             {{2, 0}},
     };
-    Graph graph = Graph(4, adj, 0, 3);
+    Graph graph = Graph(4, 3, adj, 0, 3);
     int max_flow = 5;
     return {graph, max_flow};
 }
@@ -20,7 +20,7 @@ TestData DataForTests::makeMultiplePathsGraphData() {
             {{0, 0}, {1, 0}, {3, 5}},
             {{1, 0}, {2, 0}},
     };
-    Graph graph = Graph(4, adj, 0, 3);
+    Graph graph = Graph(4, 5, adj, 0, 3);
     int max_flow = 15;
     return {graph, max_flow};
 }
@@ -33,7 +33,7 @@ TestData DataForTests::makeCycleGraphData() {
             {{2, 0}, {1, 5}, {4, 10}},
             {{3, 0}}
     };
-    Graph graph = Graph(5, adj, 0, 4);
+    Graph graph = Graph(5, 5, adj, 0, 4);
     int max_flow = 5;
     return {graph, max_flow};
 }
@@ -46,7 +46,7 @@ TestData DataForTests::makeParallelPathsGraphData() {
             {{1, 0}, {2, 0}, {4, 20}},
             {{3, 0}, }
     };
-    Graph graph = Graph(5, adj, 0, 4);
+    Graph graph = Graph(5, 5, adj, 0, 4);
     int max_flow = 20;
     return {graph, max_flow};
 }
@@ -59,7 +59,7 @@ TestData DataForTests::makeLimitOnSinkGraphData() {
             {{1, 0}, {2, 0}, {4, 5}},
             {{3, 0}, }
     };
-    Graph graph = Graph(5, adj, 0, 4);
+    Graph graph = Graph(5, 5, adj, 0, 4);
     int max_flow = 5;
     return {graph, max_flow};
 }

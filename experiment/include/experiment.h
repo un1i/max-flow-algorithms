@@ -8,6 +8,8 @@
 
 class Experiment {
 private:
+    const static size_t num_warmup_iterations;
+    const static size_t num_measurements;
     const static std::filesystem::path INPUT_DIR;
     const static std::filesystem::path OUTPUT_DIR;
     std::string name;

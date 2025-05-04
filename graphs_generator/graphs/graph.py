@@ -6,7 +6,7 @@ import networkx as nx
 
 class Graph(ABC):
     DIRNAME = Path('..') / 'experiment' / 'graphs'
-    WEIGHT_RANGE: tuple = (1, 100)
+    WEIGHT_RANGE: tuple = (1, 1000)
 
     def __init__(self, name: str, start: int, finish: int, step: int):
         self.name = name
