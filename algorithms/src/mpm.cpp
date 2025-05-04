@@ -112,7 +112,7 @@ MPM::VertexInfo MPM::findMinVertex(const std::vector<int>& pin, const std::vecto
 void MPM::sendFlowToSink(VertexInfo vertex, EdgeAvailableCapacity& available_capacity,
                     const std::vector<int>& distance, std::vector<int>& free_edge_ind,
                     std::vector<bool>& del_vertices, std::vector<int>& pin, std::vector<int>& pout) {
-    GraphAdj adj = graph.getAdj();
+    const GraphAdj& adj = graph.getAdj();
     std::queue<VertexInfo> q;
     q.push(vertex);
     while (!q.empty()) {
@@ -128,7 +128,7 @@ void MPM::sendFlowToSink(VertexInfo vertex, EdgeAvailableCapacity& available_cap
                 free_edge_ind[cur.vertex_ind]++;
             }
             else {
-                if (available_capacity[cur.vertex_ind][edge_adj.end]< cur.flow) {
+                if (available_capacity[cur.vertex_ind][edge_adj.end] < cur.flow) {
                     int flow_edge = available_capacity[cur.vertex_ind][edge_adj.end];
                     available_capacity[edge_adj.end][cur.vertex_ind] += flow_edge;
                     available_capacity[cur.vertex_ind][edge_adj.end] = 0;
@@ -154,7 +154,7 @@ void MPM::sendFlowToSink(VertexInfo vertex, EdgeAvailableCapacity& available_cap
 void MPM::sendFlowToSource(MPM::VertexInfo vertex, EdgeAvailableCapacity &available_capacity,
                            const std::vector<int> &distance, std::vector<int> &free_edge_ind,
                            std::vector<bool> &del_vertices, std::vector<int> &pin, std::vector<int> &pout) {
-    GraphAdj adj = graph.getAdj();
+    const GraphAdj& adj = graph.getAdj();
     std::queue<VertexInfo> q;
     q.push(vertex);
     while (!q.empty()) {
