@@ -12,6 +12,10 @@ size_t Graph::getNumVertices() const {
     return num_vertices;
 }
 
+size_t Graph::getNumEdges() const {
+    return num_edges;
+}
+
 const GraphAdj& Graph::getAdj() const {
     return adj;
 }

@@ -14,15 +14,17 @@ private:
     size_t source;
     size_t sink;
     size_t num_vertices;
+    size_t num_edges;
     GraphAdj adj;
 
 public:
-    Graph() : adj{}, source{0}, sink{0}, num_vertices{0} {}
-    Graph(size_t num_vertices, GraphAdj  adj, size_t source, size_t sink) :
-    num_vertices{num_vertices}, adj{std::move(adj)}, source{source}, sink{sink} {}
+    Graph() : adj{}, source{0}, sink{0}, num_vertices{0}, num_edges{0} {}
+    Graph(size_t num_vertices, size_t num_edges, GraphAdj  adj, size_t source, size_t sink) :
+    num_vertices{num_vertices}, num_edges{num_edges}, adj{std::move(adj)}, source{source}, sink{sink} {}
     size_t getSource() const;
     size_t getSink() const;
     size_t getNumVertices() const;
+    size_t getNumEdges() const;
     const GraphAdj& getAdj() const;
 };
 

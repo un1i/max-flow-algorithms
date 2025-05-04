@@ -15,7 +15,7 @@ int main(){
             {{1, 0}, {2, 0}, {4, 5}},
             {{2, 0}, {3, 0}},
     };
-    Graph graph(5, adj, 0, 4);
+    Graph graph(5,7, adj, 0, 4);
     EdmondsKarp karp(graph);
     karp.run();
     std::cout << "Edmonds-Karp result: " << karp.getMaxFlow() << std::endl;
