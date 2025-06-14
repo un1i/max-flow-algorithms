@@ -11,7 +11,7 @@
 #include <iostream>
 #include <cmath>
 
-const size_t Experiment::num_warmup_iterations = 2;
+const size_t Experiment::num_warmup_iterations = 3;
 const size_t Experiment::num_measurements = 5;
 const std::filesystem::path Experiment::INPUT_DIR =
         std::filesystem::path(__FILE__).parent_path().parent_path() / "graphs";
